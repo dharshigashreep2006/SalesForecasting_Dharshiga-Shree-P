@@ -511,59 +511,7 @@ Internship Project
 st.title("📊 Sales Forecasting Dashboard")
 st.caption("Retail Business Intelligence System")
 
-# ==========================================================
-# WELCOME PANEL
-# ==========================================================
 
-
-st.markdown("""
-<div style="
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(14px);
-padding:28px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,0.15);
-box-shadow:
-0 8px 25px rgba(0,0,0,.35),
-0 0 18px rgba(59,130,246,.30);
-margin-bottom:25px;
-">
-
-<h2 style="color:white;margin-top:0;">
-👋 Welcome!
-</h2>
-
-<p style="color:#D1D5DB;font-size:18px;">
-This dashboard provides:
-</p>
-
-<div style="
-background:rgba(255,255,255,0.05);
-padding:15px;
-border-radius:12px;
-margin-bottom:20px;
-">
-
-<ul style="color:white;font-size:17px;line-height:2;">
-<li>📊 Sales Overview</li>
-<li>📈 Sales Forecasting</li>
-<li>🚨 Anomaly Detection</li>
-<li>📦 Product Demand Segmentation</li>
-</ul>
-
-</div>
-
-<p style="
-color:#FFD166;
-font-size:17px;
-font-weight:600;
-margin-bottom:0;
-">
-👉 Use the left sidebar to navigate through the dashboard pages.
-</p>
-
-</div>
-""", unsafe_allow_html=True)
 # ==========================================================
 # FOOTER FUNCTION
 # ==========================================================
@@ -576,7 +524,7 @@ def footer():
 
 <center>
 
-Sales Forecasting Dashboard • Internship Project • 2026
+Sales Forecasting Dashboard 
 
 </center>
 
@@ -593,6 +541,59 @@ Sales Forecasting Dashboard • Internship Project • 2026
 def sales_overview():
 
     st.header("📊 Sales Overview Dashboard")
+
+    # ==========================================================
+    # WELCOME PANEL
+    # ==========================================================
+
+    st.markdown("""
+    <div style="
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(14px);
+    padding:28px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.35),
+    0 0 18px rgba(59,130,246,.30);
+    margin-bottom:25px;
+    ">
+
+    <h2 style="color:white;margin-top:0;">
+    👋 Welcome!
+    </h2>
+
+    <p style="color:#D1D5DB;font-size:18px;">
+    This dashboard provides:
+    </p>
+
+    <div style="
+    background:rgba(255,255,255,0.05);
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+    ">
+
+    <ul style="color:white;font-size:17px;line-height:2;">
+        <li>📊 Sales Overview</li>
+        <li>📈 Sales Forecasting</li>
+        <li>🚨 Anomaly Detection</li>
+        <li>📦 Product Demand Segmentation</li>
+    </ul>
+
+    </div>
+
+    <p style="
+    color:#FFD166;
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:0;
+    ">
+    👉 Use the left sidebar to navigate through the dashboard pages.
+    </p>
+
+    </div>
+    """, unsafe_allow_html=True)
 
     # -----------------------
     # KPI CARDS
@@ -671,12 +672,14 @@ def sales_overview():
     f1, f2 = st.columns(2)
 
     with f1:
+
         region = st.selectbox(
             "Select Region",
             ["All"] + sorted(sales_df["Region"].unique().tolist())
         )
 
     with f2:
+
         category = st.selectbox(
             "Select Category",
             ["All"] + sorted(sales_df["Category"].unique().tolist())
@@ -754,7 +757,6 @@ def sales_overview():
         filtered_df,
         use_container_width=True
     )
-
 
 # ==========================================================
 # PAGE 2
