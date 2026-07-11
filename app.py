@@ -608,30 +608,31 @@ def sales_overview():
 
     st.divider()
 
-    # -----------------------
-    # SALES CHARTS
-    # -----------------------
+   # -----------------------
+# SALES CHARTS
+# -----------------------
 
-    left, right = st.columns(2)
+left, right = st.columns(2)
 
-    with left:
+with left:
 
-        yearly_sales = sales_df.groupby("Year")["Sales"].sum()
+    yearly_sales = sales_df.groupby("Year")["Sales"].sum()
 
-        fig, ax = plt.subplots(figsize=(6,4))
+    fig, ax = plt.subplots(figsize=(6,4))
 
-        yearly_sales.plot(
-            kind="bar",
-            ax=ax
-        )
+    yearly_sales.plot(
+        kind="bar",
+        ax=ax
+    )
 
-        ax.set_title("Total Sales by Year")
-        ax.set_xlabel("Year")
-        ax.set_ylabel("Sales")
+    ax.set_title("Total Sales by Year")
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Sales")
 
-        st.pyplot(fig)
+    st.pyplot(fig)
 
-    with right:
+
+with right:
 
     # Convert Order Date to datetime
     sales_df["Order Date"] = pd.to_datetime(sales_df["Order Date"])
@@ -658,7 +659,7 @@ def sales_overview():
 
     st.pyplot(fig)
 
-    st.divider()
+st.divider()
 
     # -----------------------
     # FILTERS
