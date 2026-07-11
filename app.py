@@ -586,6 +586,10 @@ Sales Forecasting Dashboard • Internship Project • 2026
 # PAGE 1 : SALES OVERVIEW
 # ==========================================================
 
+# ==========================================================
+# PAGE 1 : SALES OVERVIEW
+# ==========================================================
+
 def sales_overview():
 
     st.header("📊 Sales Overview Dashboard")
@@ -608,56 +612,53 @@ def sales_overview():
 
     st.divider()
 
-   # -----------------------
-# SALES CHARTS
-# -----------------------
+    # -----------------------
+    # SALES CHARTS
+    # -----------------------
 
-left, right = st.columns(2)
+    left, right = st.columns(2)
 
-with left:
+    with left:
 
-    yearly_sales = sales_df.groupby("Year")["Sales"].sum()
+        yearly_sales = sales_df.groupby("Year")["Sales"].sum()
 
-    fig, ax = plt.subplots(figsize=(6,4))
+        fig, ax = plt.subplots(figsize=(6,4))
 
-    yearly_sales.plot(
-        kind="bar",
-        ax=ax
-    )
+        yearly_sales.plot(
+            kind="bar",
+            ax=ax
+        )
 
-    ax.set_title("Total Sales by Year")
-    ax.set_xlabel("Year")
-    ax.set_ylabel("Sales")
+        ax.set_title("Total Sales by Year")
+        ax.set_xlabel("Year")
+        ax.set_ylabel("Sales")
 
-    st.pyplot(fig)
+        st.pyplot(fig)
 
+    with right:
 
-with right:
+        sales_df["Order Date"] = pd.to_datetime(sales_df["Order Date"])
 
-    # Convert Order Date to datetime
-    sales_df["Order Date"] = pd.to_datetime(sales_df["Order Date"])
+        monthly_sales = (
+            sales_df
+            .set_index("Order Date")
+            .resample("ME")["Sales"]
+            .sum()
+        )
 
-    # Monthly Sales
-    monthly_sales = (
-        sales_df
-        .set_index("Order Date")
-        .resample("ME")["Sales"]
-        .sum()
-    )
+        fig, ax = plt.subplots(figsize=(6,4))
 
-    fig, ax = plt.subplots(figsize=(6,4))
+        ax.plot(
+            monthly_sales.index,
+            monthly_sales.values,
+            linewidth=2
+        )
 
-    ax.plot(
-        monthly_sales.index,
-        monthly_sales.values,
-        linewidth=2
-    )
+        ax.set_title("Monthly Sales Trend")
+        ax.set_xlabel("Date")
+        ax.set_ylabel("Sales")
 
-    ax.set_title("Monthly Sales Trend")
-    ax.set_xlabel("Date")
-    ax.set_ylabel("Sales")
-
-    st.pyplot(fig)
+        st.pyplot(fig)
 
     st.divider()
 
@@ -670,14 +671,12 @@ with right:
     f1, f2 = st.columns(2)
 
     with f1:
-
         region = st.selectbox(
             "Select Region",
             ["All"] + sorted(sales_df["Region"].unique().tolist())
         )
 
     with f2:
-
         category = st.selectbox(
             "Select Category",
             ["All"] + sorted(sales_df["Category"].unique().tolist())
