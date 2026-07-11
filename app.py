@@ -633,27 +633,30 @@ def sales_overview():
 
     with right:
 
-        monthly_sales = (
-            sales_df
-            .groupby("Order Date")["Sales"]
-            .sum()
-            .resample("M")
-            .sum()
-        )
+    # Convert Order Date to datetime
+    sales_df["Order Date"] = pd.to_datetime(sales_df["Order Date"])
 
-        fig, ax = plt.subplots(figsize=(6,4))
+    # Monthly Sales
+    monthly_sales = (
+        sales_df
+        .set_index("Order Date")
+        .resample("ME")["Sales"]
+        .sum()
+    )
 
-        ax.plot(
-            monthly_sales.index,
-            monthly_sales.values,
-            linewidth=2
-        )
+    fig, ax = plt.subplots(figsize=(6,4))
 
-        ax.set_title("Monthly Sales Trend")
-        ax.set_xlabel("Date")
-        ax.set_ylabel("Sales")
+    ax.plot(
+        monthly_sales.index,
+        monthly_sales.values,
+        linewidth=2
+    )
 
-        st.pyplot(fig)
+    ax.set_title("Monthly Sales Trend")
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Sales")
+
+    st.pyplot(fig)
 
     st.divider()
 
