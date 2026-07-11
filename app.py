@@ -659,7 +659,7 @@ with right:
 
     st.pyplot(fig)
 
-st.divider()
+    st.divider()
 
     # -----------------------
     # FILTERS
