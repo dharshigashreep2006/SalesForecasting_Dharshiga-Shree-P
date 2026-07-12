@@ -67,7 +67,7 @@ animation:gradientBG 18s ease infinite;
    TEXT
 =========================================================== */
 
-h1,h2,h3,h4,h5,h6,p,label,span,div{
+h1,h2,h3,h4,h5,h6,p,label{
 
 color:white;
 
@@ -226,24 +226,22 @@ background:#1E293B !important;
 
 }
 
-ul{
+/* ==========================================
+   DROPDOWN OPTIONS
+========================================== */
 
-background:#1E293B !important;
-
+div[data-baseweb="popover"] ul{
+    background:white !important;
 }
 
-li{
-
-background:#1E293B !important;
-
-color:white !important;
-
+div[data-baseweb="popover"] li{
+    background:white !important;
+    color:black !important;
 }
 
-li:hover{
-
-background:#2563EB !important;
-
+div[data-baseweb="popover"] li:hover{
+    background:#E5E7EB !important;
+    color:black !important;
 }
 
 /* ===========================================================
