@@ -435,6 +435,25 @@ transform:translateY(0);
 [data-testid="stMetricDelta"]{
     color:#22C55E !important;
 }
+/* ==========================================
+   STREAMLIT HEADINGS
+========================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[data-testid="stHeading"]{
+    color:white !important;
+}
+
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3{
+    color:white !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
