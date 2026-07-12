@@ -67,7 +67,7 @@ animation:gradientBG 18s ease infinite;
    TEXT
 =========================================================== */
 
-h1,h2,h3,h4,h5,h6,p,label,span,div{
+h1,h2,h3,h4,h5,h6,p,label{
 
 color:white;
 
@@ -418,6 +418,22 @@ transform:translateY(0);
 
 }
 
+}
+            /* ==========================================
+   KPI VALUE COLOR
+========================================== */
+
+[data-testid="stMetricValue"]{
+    color: white !important;
+    font-weight:700 !important;
+}
+
+[data-testid="stMetricLabel"]{
+    color:#D1D5DB !important;
+}
+
+[data-testid="stMetricDelta"]{
+    color:#22C55E !important;
 }
 </style>
 """, unsafe_allow_html=True)
