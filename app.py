@@ -682,10 +682,16 @@ def sales_overview():
         ax.set_ylabel("Sales")
 
         st.pyplot(fig)
+        plt.close(fig)
 
     with right:
 
-        sales_df["Order Date"] = pd.to_datetime(sales_df["Order Date"])
+    
+        @st.cache_data
+        def load_sales():
+            df=pd.read_csv("sales.csv")
+            df["Order Date"]=pd.to_datetime(df["Order Date"])
+            return df
 
         monthly_sales = (
             sales_df
@@ -707,6 +713,7 @@ def sales_overview():
         ax.set_ylabel("Sales")
 
         st.pyplot(fig)
+        plt.close(fig)
 
     st.divider()
 
@@ -771,6 +778,7 @@ def sales_overview():
         ax.set_title("Sales by Category")
 
         st.pyplot(fig)
+        plt.close(fig)
 
     with c2:
 
@@ -791,6 +799,7 @@ def sales_overview():
         ax.set_title("Sales by Region")
 
         st.pyplot(fig)
+        plt.close(fig)
 
     st.divider()
 
@@ -865,6 +874,7 @@ def forecast_explorer():
         ax.set_ylabel("Sales")
 
         st.pyplot(fig)
+        plt.close(fig)
 
         st.dataframe(display_df, use_container_width=True)
 
@@ -910,6 +920,7 @@ def forecast_explorer():
         ax.set_ylabel("Sales")
 
         st.pyplot(fig)
+        plt.close(fig)
 
         st.dataframe(chart_df, use_container_width=True)
 
@@ -944,6 +955,7 @@ def forecast_explorer():
         ax.set_ylabel("Sales")
 
         st.pyplot(fig)
+        plt.close(fig)
 
         st.dataframe(chart_df, use_container_width=True)
 
@@ -1056,6 +1068,7 @@ def anomaly_report():
     ax.legend()
 
     st.pyplot(fig)
+    plt.close(fig)
 
     st.markdown("---")
 
@@ -1154,6 +1167,7 @@ def product_segments():
     ax.legend()
 
     st.pyplot(fig)
+    plt.close(fig)
 
     st.markdown("---")
 
