@@ -6,18 +6,19 @@
 # -----------------------------
 # Import Libraries
 # -----------------------------
-from streamlit_lottie import st_lottie
+#from streamlit_lottie import st_lottie
 import requests
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
+#import numpy as np
 
-def load_lottie(url):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
+#def load_lottie(url):
+#    r = requests.get(url)
+ #   if r.status_code != 200:
+  #      return None
+   # return r.json()
+
 # ==========================================================
 # PAGE CONFIG
 # ==========================================================
